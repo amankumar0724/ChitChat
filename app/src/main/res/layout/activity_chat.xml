@@ -33,12 +33,13 @@
             app:tint="@color/white"
             android:layout_centerVertical="true"
             android:id="@+id/back_btn"/>
+
         <include layout="@layout/prof_pic"
+            android:id="@+id/profile_pic_layout"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="10dp"
-            android:layout_toRightOf="@id/back_btn"
-            android:id="@+id/profile_pic_layout"/>
+            android:layout_gravity="center"
+            android:layout_toRightOf="@id/back_btn" />
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

@@ -5,11 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 
+import com.example.chitchat.Utils.FirebaseUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,5 +48,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         bottomNavBar.setSelectedItemId(R.id.chat_option);
+
+        getFCMToken();
+
+    }
+
+    private void getFCMToken() {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task->{
+            if(task.isSuccessful()){
+                String token = task.getResult();
+//                Log.i("MY TOKEN",token);
+                FirebaseUtil.currentUserDetails().update("fcmToken",token);
+            }
+        });
     }
 }

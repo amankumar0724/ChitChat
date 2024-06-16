@@ -3,6 +3,7 @@ package com.example.chitchat.Adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.AndroidException;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,13 @@ public class SearchRecyclerAdapter extends FirestoreRecyclerAdapter<UserModel, S
         if(Objects.equals(model.getUserId(), FirebaseUtil.currentUserId())){
             holder.usernameText.setText(model.getUsername() + " (Me)");
         }
+        FirebaseUtil.getOtherProfilePicStorageRef(model.getUserId()).getDownloadUrl()
+                .addOnCompleteListener(t -> {
+                    if(t.isSuccessful()){
+                        Uri uri  = t.getResult();
+                        AndroidUtil.setProfilePic(context,uri,holder.profilePic);
+                    }
+                });
         holder.itemView.setOnClickListener(v->{
 ////            //navigate to chat activity
             Intent intent = new Intent(context, ChatActivity.class);

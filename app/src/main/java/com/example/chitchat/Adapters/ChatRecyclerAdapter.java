@@ -3,6 +3,7 @@ package com.example.chitchat.Adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.AndroidException;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,7 @@ public class ChatRecyclerAdapter extends FirestoreRecyclerAdapter<ChatMessageMod
             holder.senderChatLayout.setVisibility(View.VISIBLE);
             holder.senderChatText.setText(model.getMessage());
         }
+
     }
     @NonNull
     @Override

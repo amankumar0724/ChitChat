@@ -3,6 +3,7 @@ package com.example.chitchat.Adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.AndroidException;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import org.w3c.dom.Text;
 
+import java.text.ParseException;
 import java.util.Objects;
 
 public class ChatFragmentRecyclerAdapter extends FirestoreRecyclerAdapter<ChatboxModel, ChatFragmentRecyclerAdapter.ChatboxModelViewHolder> {
@@ -36,13 +38,35 @@ public class ChatFragmentRecyclerAdapter extends FirestoreRecyclerAdapter<Chatbo
     @SuppressLint("SetTextI18n")
     @Override
     protected void onBindViewHolder(@NonNull ChatboxModelViewHolder holder, int position, @NonNull ChatboxModel model) {
+
         FirebaseUtil.getOtheruserFromChatbox(model.getUserIds())
                 .get().addOnCompleteListener(task -> {
                     if(task.isSuccessful()) {
                         UserModel otherUserModel = task.getResult().toObject(UserModel.class);
+
+                        FirebaseUtil.getOtherProfilePicStorageRef(otherUserModel.getUserId()).getDownloadUrl()
+                                .addOnCompleteListener(t -> {
+                                    if(t.isSuccessful()){
+                                        Uri uri  = t.getResult();
+                                        AndroidUtil.setProfilePic(context,uri,holder.profilePic);
+                                    }
+                                });
+
+                        assert otherUserModel != null;
                         holder.usernameText.setText(otherUserModel.getUsername());
-                        holder.lastMessageText.setText(model.getLastMessage());
+                        if(Objects.equals(model.getLastMesSenderId(), FirebaseUtil.currentUserId())){
+                            holder.lastMessageText.setText("You: "+model.getLastMessage());
+                        }else{
+                            holder.lastMessageText.setText(model.getLastMessage());
+                        }
                         holder.lastMessageTime.setText(FirebaseUtil.timestampToString(model.getLastMesTimestamp()));
+
+                        holder.itemView.setOnClickListener(v->{
+                            Intent intent = new Intent(context, ChatActivity.class);
+                            AndroidUtil.passingUserdataByIntent(intent,otherUserModel);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(intent);
+                        });
                     }
                 });
     }
