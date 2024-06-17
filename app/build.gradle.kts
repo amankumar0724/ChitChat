@@ -36,8 +36,6 @@ android {
 }
 
 dependencies {
-    implementation ("com.google.firebase:firebase-storage-ktx:21.0.0")
-    implementation ("com.google.firebase:firebase-messaging-ktx:24.0.0")
     implementation ("com.firebaseui:firebase-ui-firestore:8.0.2")
     implementation("com.google.firebase:firebase-auth")
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
