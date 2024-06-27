@@ -15,9 +15,10 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(FirebaseUtil.isLoggedIn() && getIntent().getExtras() != null){
+        String userId = getIntent().getStringExtra("userId");
+        if(FirebaseUtil.isLoggedIn() && getIntent().getStringExtra("userId") != null){
             //intent from notification
-            String userId = getIntent().getExtras().getString("userId");
+
             FirebaseUtil.allUserCollectionReference().document(userId).get()
                     .addOnCompleteListener(task -> {
                         if(task.isSuccessful()){

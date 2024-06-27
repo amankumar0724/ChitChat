@@ -48,7 +48,7 @@ public class LoginOtpActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.login_progress_bar);
         resendOtpTextView = findViewById(R.id.resend_otp_textview);
 
-        phoneNumber = getIntent().getExtras().getString("phone");
+        phoneNumber = getIntent().getStringExtra("phone");
 
         sendOtp(phoneNumber,false);
 
@@ -112,6 +112,7 @@ public class LoginOtpActivity extends AppCompatActivity {
     void signIn(PhoneAuthCredential phoneAuthCredential){
         //login and go to next activity
         setInProgress(true);
+//        AndroidUtil.showToast(getApplicationContext(),"OTP verification failed !!!!!!");
         mAuth.signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -125,8 +126,6 @@ public class LoginOtpActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     void startResendTimer(){

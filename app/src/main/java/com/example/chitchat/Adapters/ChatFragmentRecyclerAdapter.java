@@ -44,13 +44,15 @@ public class ChatFragmentRecyclerAdapter extends FirestoreRecyclerAdapter<Chatbo
                     if(task.isSuccessful()) {
                         UserModel otherUserModel = task.getResult().toObject(UserModel.class);
 
-                        FirebaseUtil.getOtherProfilePicStorageRef(otherUserModel.getUserId()).getDownloadUrl()
-                                .addOnCompleteListener(t -> {
-                                    if(t.isSuccessful()){
-                                        Uri uri  = t.getResult();
-                                        AndroidUtil.setProfilePic(context,uri,holder.profilePic);
-                                    }
-                                });
+//                        if (otherUserModel != null) {
+                            FirebaseUtil.getOtherProfilePicStorageRef(otherUserModel.getUserId()).getDownloadUrl()
+                                    .addOnCompleteListener(t -> {
+                                        if(t.isSuccessful()){
+                                            Uri uri  = t.getResult();
+                                            AndroidUtil.setProfilePic(context,uri,holder.profilePic);
+                                        }
+                                    });
+//                        }
 
                         assert otherUserModel != null;
                         holder.usernameText.setText(otherUserModel.getUsername());

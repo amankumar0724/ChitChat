@@ -1,13 +1,32 @@
 {
   "project_info": {
-    "project_number": "12774377223",
-    "project_id": "chit-chat-8c171",
-    "storage_bucket": "chit-chat-8c171.appspot.com"
+    "project_number": "242964980268",
+    "project_id": "authenticaiton-a4c9a",
+    "storage_bucket": "authenticaiton-a4c9a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:12774377223:android:8f5f7e183d2e98615e27a2",
+        "mobilesdk_app_id": "1:242964980268:android:aeafb1a6fcfbfd21b56789",
+        "android_client_info": {
+          "package_name": "com.example.authenticaiton"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4VVYhfRqM-iHggjgkJpbPdF7MKSbnDVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242964980268:android:c6398c3ced5f8bb6b56789",
         "android_client_info": {
           "package_name": "com.example.chitchat"
         }
@@ -15,7 +34,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDcf7Cj471n77iM_xXg2tdaBKjqGxVyPTg"
+          "current_key": "AIzaSyB4VVYhfRqM-iHggjgkJpbPdF7MKSbnDVk"
         }
       ],
       "services": {
