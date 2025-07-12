@@ -1,8 +1,7 @@
 # 💬 ChitChat - Android Chatting App
 
-Below is the vedio link of running application:(at 1.5x speed): 
-
-![Demo Video](https://github.com/amankumar0724/ChitChat/assets/128999710/3b2d484b-f809-480e-87e1-7da12d42e339)
+Watch the demo of the running ChitChat application (recommended at 1.5x speed):  
+[▶️ Demo Video](https://github.com/amankumar0724/ChitChat/assets/128999710/3b2d484b-f809-480e-87e1-7da12d42e339)
 
 **ChitChat** is a sleek and lightweight real-time messaging app designed to simplify communication between users. Built with modern Android development practices, it offers seamless chat features, secure login, and an intuitive user experience.
 
