@@ -27,9 +27,8 @@ ChitChat allows users to register, log in securely, and start chatting with othe
 
 ### 👤 Authentication
 
-- Register and login with email/password  
-- Firebase Authentication with secure session handling  
-- Optionally supports Google Sign-In (if implemented)
+- Register and log in using phone number and OTP verification  
+- Secured using Firebase Phone Authentication with session management 
 
 ### 💬 Messaging
 
